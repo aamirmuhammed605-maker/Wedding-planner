@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: wedding-family-planner
+    runtime: node
+    # SQLite needs a persistent disk; choose a Render plan that supports disks.
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: planner-data
+      mountPath: /app/data
+      sizeGB: 1
